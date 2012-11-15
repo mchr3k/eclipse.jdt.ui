@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2012 IBM Corporation and others.
+ * Copyright (c) 2000, 2010, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,11 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *     Tom Eicher (Avaloq Evolution AG) - block selection mode
+ *     Kelly Campbell <kellyc@google.com> - [typing] String literal splitting
+ *       should use formatter preferences - http://bugs.eclipse.org/48433
+ *     Martin Hare Robertson <mchr3k@gmail.com> - [typing] String literal
+ *       splitting should use formatter preferences -
+ *       http://bugs.eclipse.org/48433
  *******************************************************************************/
 package org.eclipse.jdt.ui.text;
 
@@ -467,7 +472,7 @@ public class JavaSourceViewerConfiguration extends TextSourceViewerConfiguration
 		if (IJavaPartitions.JAVA_DOC.equals(contentType) || IJavaPartitions.JAVA_MULTI_LINE_COMMENT.equals(contentType))
 			return new IAutoEditStrategy[] { new JavaDocAutoIndentStrategy(partitioning) };
 		else if (IJavaPartitions.JAVA_STRING.equals(contentType))
-			return new IAutoEditStrategy[] { new SmartSemicolonAutoEditStrategy(partitioning), new JavaStringAutoIndentStrategy(partitioning) };
+			return new IAutoEditStrategy[] { new SmartSemicolonAutoEditStrategy(partitioning), new JavaStringAutoIndentStrategy(partitioning, getProject()) };
 		else if (IJavaPartitions.JAVA_CHARACTER.equals(contentType) || IDocument.DEFAULT_CONTENT_TYPE.equals(contentType))
 			return new IAutoEditStrategy[] { new SmartSemicolonAutoEditStrategy(partitioning), new JavaAutoIndentStrategy(partitioning, getProject(), sourceViewer) };
 		else
