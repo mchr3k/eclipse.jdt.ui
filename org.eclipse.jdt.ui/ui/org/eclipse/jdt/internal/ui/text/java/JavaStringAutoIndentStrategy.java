@@ -208,8 +208,19 @@ public class JavaStringAutoIndentStrategy extends DefaultIndentLineAutoEditStrat
 	 * @return two tabs or equivalent number of spaces
 	 */
 	private String getExtraIndentAfterNewLine() {
-		int formatterTabSizePref= CodeFormatterUtil.getTabWidth(fProject);
-		return CodeFormatterUtil.createIndentString(formatterTabSizePref, fProject);
+		// read settings
+		int formatterContinuationIndentationSize= 2;
+		try
+		{
+			formatterContinuationIndentationSize = Integer.parseInt(getCoreFormatterOption(DefaultCodeFormatterConstants.FORMATTER_CONTINUATION_INDENTATION));
+		}
+		catch (NumberFormatException ex)
+		{
+			// Ignore, use default of 2
+		}
+		
+		// generate indentation string with correct size
+		return CodeFormatterUtil.createIndentString(formatterContinuationIndentationSize, fProject);
 	}
 
 	private boolean isSmartMode() {
