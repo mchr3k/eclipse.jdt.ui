@@ -8,11 +8,8 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *     Tom Eicher (Avaloq Evolution AG) - block selection mode
- *     Kelly Campbell <kellyc@google.com> - [typing] String literal splitting
- *       should use formatter preferences - http://bugs.eclipse.org/48433
- *     Martin Hare Robertson <mchr3k@gmail.com> - [typing] String literal
- *       splitting should use formatter preferences -
- *       http://bugs.eclipse.org/48433
+ *     Kelly Campbell <kellyc@google.com> - [typing] String literal splitting should use formatter preferences - http://bugs.eclipse.org/48433
+ *     Martin Hare Robertson <mchr3k@gmail.com> - [typing] String literal splitting should use formatter preferences - http://bugs.eclipse.org/48433
  *******************************************************************************/
 package org.eclipse.jdt.ui.text;
 
